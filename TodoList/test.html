@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <script>
+        function addTask() {
+    // Get the input value
+    var taskInput = document.getElementById('taskInput');
+    var task = taskInput.value;
+    if (task !== '') {
+        // Create a new row and cells for the table
+        var table = document.getElementById('taskTable');
+        var row = table.insertRow(-1);
+        var cell = row.insertCell(0);
+        // Set the cell content to the task
+        cell.innerHTML = task;
+        // Clear the input field
+        taskInput.value = '';
+    }
+}
+    </script>
+    <title>To-Do List</title>
+</head>
+<body>
+    <input type="text" id="taskInput">
+    <button onclick="addTask()">Add</button>
+    <table id="taskTable">
+        <tr>
+            <th>Task</th>
+        </tr>
+    </table>
+    <script src="index.js"></script>
+</body>
+</html>

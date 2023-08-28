@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz file </title>
+</head>
+<body>
+  <body style="background-color: aqua;">
+
+    <h1 style="text-align: center;">Quiz App</h1>
+    <h2 style="text-align: center; color: rgb(238, 27, 157);">Using html, CSS and JavaScript</h2>
+    <div style="border: 3px solid red;text-align: center;width: 50;margin-left: 30%;width: 40%;align-items: center;padding-bottom: 15%;background-color:rgb(10, 216, 55);">
+
+
+
+
+    <section class="main">
+
+        <div class="container">
+            <div class="col">
+                <h3 id="questionBox">
+                </h3>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="first" value="a">
+                <label for="first">Testing 1</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="second" value="b" >
+                <label for="second">Testing 2</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="third" value="c" >
+                <label for="third">Testing 3</label>
+            </div>
+            <div class="col box">
+                <input name="option" type="radio" id="fourth" value="d" >
+                <label for="fourth">Testing 4</label>
+            </div><br><br>
+            <br><br><br>
+            <button style="padding: 10px;background-color: rgb(47, 50, 221);border-radius: 7px;border: 2px solid red;width: 30%;" id="submit">Next</button>
+            <button style="padding: 10px;background-color: rgb(47, 50, 221);border-radius: 7px;border: 2px solid red;width: 30%;" id="submit1">Submit</button>
+        </div>
+
+    </section>
+
+
+        <script>
+          
+          const quizData = [{
+       
+        question: "Which of the following is a client site language?",
+        a: "Java",
+        b: "C",
+        c: "Python",
+        d: "JavaScript",
+        correct: "d",
+    },
+    {
+        question: "What does HTML stand for?",
+        a: "Hypertext Markup Language",
+        b: "Cascading Style Sheet",
+        c: "Jason Object Notation",
+        d: "Helicopters Terminals Motorboats Lamborginis",
+        correct: "a",
+    },
+    {
+        question: "What year was JavaScript launched?",
+        a: "1996",
+        b: "1995",
+        c: "1994",
+        d: "1998",
+        correct: "b",
+    },
+    {
+        question: "What does CSS stands for?",
+        a: "Hypertext Markup Language",
+        b: "Cascading Style Sheet",
+        c: "Jason Object Notation",
+        d: "Helicopters Terminals Motorboats Lamborginis",
+        correct: "b",
+    }
+];
+let index = 0;
+let correct = 0,
+    incorrect = 0,
+    total = quizData.length;
+let questionBox = document.getElementById("questionBox");
+let allInputs = document.querySelectorAll("input[type='radio']")
+let  loadQuestion = () => {
+    
+    let  data = quizData[index]
+    questionBox.innerHTML = `${index + 1}) ${data.question}`
+    allInputs[0].nextElementSibling.innerText = data.a
+    allInputs[1].nextElementSibling.innerText = data.b
+    allInputs[2].nextElementSibling.innerText = data.c
+    allInputs[3].nextElementSibling.innerText = data.d
+    reset()
+
+}
+
+document.querySelector("#submit").addEventListener(
+    "click",
+    function() {
+      let  data = quizData[index]
+      let  ans = getAnswer()
+        if (ans === data.correct) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+        index++;
+        loadQuestion()
+    }
+)
+document.querySelector("#submit1").addEventListener(
+    "click",
+    function() {
+        // if (total === index) {
+         quizEnd()
+    // }
+    reset()
+
+    })
+
+let  getAnswer = () => {
+    let ans;
+    allInputs.forEach(
+        (inputEl) => {
+            if (inputEl.checked) {
+                ans = inputEl.value;
+            }
+        }
+    )
+    return ans;
+}
+
+let  reset = () => {
+    allInputs.forEach(
+        (inputEl) => {
+            inputEl.checked = false;
+        }
+    )
+}
+
+let  quizEnd = () => {
+    // console.log(document.getElementsByClassName("container"));
+    
+    document.getElementsByClassName("container")[0].innerHTML = `
+        <div class="col">
+            <h3 class="w-100"> Your score ${correct} / ${total} </h3>
+        </div>
+    `
+}
+loadQuestion(index);
+        </script>
+
+  
+</body>
+</html>

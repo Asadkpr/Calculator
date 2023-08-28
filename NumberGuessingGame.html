@@ -1,0 +1,96 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Number Guessing Game</title>
+	<style>
+		#heading{
+			background-color: rgb(4, 5, 73);
+			margin: px;text-align: center;
+			width: 90%;
+			height: 50px;
+			margin-bottom: 50px;
+			margin-left: 20px;
+			color: white;
+		}
+		.box{
+			text-align: center;
+			background-color: white;
+			border: 2px solid black;
+			width: 30%;
+			margin-left: 33%;
+			margin-top: 50px;
+			height: 500px;
+			border-radius: 10px;
+		}
+		p{
+			font-size: 25px;
+			color: blue;
+		}
+		input{
+			border: 3px solid blue;
+			border-radius: 7px;
+			font-size: 30px;
+		}
+		button{
+			height: 45px;
+			width: 150px;
+			 background-color: rgb(221, 12, 92);
+			 margin-top: 50px;
+			 border-radius: 10px;
+			 background-color: blue;
+			 color: white;
+			 font-size: 25px;
+			 cursor: pointer;
+		}
+	</style>
+</head>
+<body style="background-color: rgb(111, 0, 255);">
+<div >
+	<div class="box">
+	<div id="heading"><h1>Number Guessing Game</h1></div>
+        <p>Guess a number between 1 to 15:</p>
+    <input type="text" style="width: 40%;height: 50px;" id="guessField"
+        class="guessField"><br>
+        <button id="submitguess">Guess</button>
+		<p id="asad"></p>
+</div></div>
+<script>
+    let y = Math.floor(Math.random() * 5  +1);
+    let guess = 1;
+
+		document.getElementById("submitguess").onclick = function () {
+
+			let message =document.getElementById('asad')
+			let x = document.getElementById("guessField").value;
+
+			if(x > 15){
+				
+				message.textContent='Invalid Numbder'
+			}
+			else if (x == y) {
+    message.textContent = 'Total Number of Guesses: ' + guess + '\nGuessed number are: ' + x;
+}
+
+			else if (x > y) {
+				message.textContent=" SORRY!! TRY A SMALLER NUMBER";
+				guess++;
+			}
+			else if (x < y)
+			{
+				guess++;
+				message.textContent=" SORRY!! TRY A GREATER NUMBER";
+			}
+			else{
+				message.textContent='please Enter the number'
+			}
+		}
+</script>
+    
+</body>    
+</html>
+
+  

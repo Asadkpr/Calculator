@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movies</title>
+    <style>
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        button {
+            background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+        }
+        /* input{height: 30px;width: 20%;
+            background-color: aqua;
+        } */
+        input{
+            width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+        }
+        
+        form{
+            max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="title"],
+  input[type="type"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  p{
+    text-align: center;
+  }
+    </style>
+</head>
+
+<body style="font-family: Arial, sans-serif;
+background-color: #da8bbc;">
+    <h1 style="text-align: center;color: rgb(60, 32, 218);">Media Selection</h1>
+    <p>please fill the form after submition</p>
+    <form id="mediaForm" >
+        Type:
+        <select id="type">
+            <option value="movie">Movie</option>
+            <option value="game">Game</option>
+            <option value="song">Song</option>
+            <option value="Drama">Drama</option>
+        </select><br>
+        <br>
+
+        Title:
+        <input type="text" id="title" value="" ><br>
+        <p id="titleError"></p>
+        Release Date:
+        <input type="date" id="Release" value=""><br><br>
+        Rating:
+        <input type="number" id="Rating" value=""><br><br>
+        Genre:
+        <select id="Genre" >
+            <option value="action">Action</option>
+            <option value="horror">Horror</option>
+            <option value="comedy">Comedy</option>
+            <option value="animated">Animated Movie</option>
+        </select><br><br>
+       
+       <a href="homePage.html"> <button type="button" id="submitButton">Submit</button> </a>
+       
+    </form>
+
+    
+
+    <script src="index.js"></script>
+</body>
+
+</html>

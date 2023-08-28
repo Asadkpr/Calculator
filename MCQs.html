@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs </title>
+</head>
+<body style="background-color: aqua;">
+
+    <h1 style="text-align: center;">Quiz App</h1>
+    <div style="border: 3px solid red;text-align: center;width: 50;margin-left: 30%;width: 40%;align-items: center;padding-bottom: 20%;background-color:rgb(10, 216, 55);">
+
+        <h2>select the correct answare</h2><br><br>
+
+        <div id="question-container">
+            <p id="question-text"></p>
+        </div>
+        <div id="answer-container">
+            <input type="radio" name="answer" value="A" id="answer-a">
+            <label for="answer-a" id="label-a"></label><br>
+            <input type="radio" name="answer" value="B" id="answer-b">
+            <label for="answer-b" id="label-b"></label><br>
+            <input type="radio" name="answer" value="C" id="answer-c">
+            <label for="answer-c" id="label-c"></label><br>
+            <input type="radio" name="answer" value="D" id="answer-d">
+            <label for="answer-d" id="label-d"></label><br>
+        </div>
+        <br><br>
+        <p id="asad">Click next button to move the next question</p>
+        <button style="padding: 10px;background-color: blue;border-radius: 5px;border: 2px solid red;" id="next-button">Click Next</button>
+        <button style="padding: 10px;background-color: blue;border-radius: 5px;border: 2px solid red;" id="submit-button">Submit Quiz</button>
+        <p id="score-text"></p>
+
+    <!-- <h2>select a correct answare</h2><br><br>
+    <div >
+    <div>
+    <p>Question No:1 what is the capital of pakistan?</p> <br><br>
+    <input type="radio"name ='a' class="q1" value="karachi">karachi
+    <input type="radio"  name ='a'class="q1" value="lahore">lahore
+    <input type="radio" name ='a' class="q1" value="islamabad">islamabad
+    </div>
+    <div>
+        <p>Question No:1 what is the capital of india?</p> <br><br>
+        <input type="radio"name ='b' class="q1" value="dheli">dehli
+        <input type="radio"  name ='b'class="q1" value="mumbai">mumbai
+        <input type="radio" name ='b' class="q1" value="punjab">punjab
+        </div>
+        <div>
+            <p>Question No:1 what is the capital of bangla desh?</p> <br><br>
+            <input type="radio"name ='c' class="q1" value="dhaka">dhaka
+            <input type="radio"  name ='c'class="q1" value="bangla">bangla
+            <input type="radio" name ='c' class="q1" value="desh">desh
+            </div>
+            </div>
+    <br><br> <br>
+    <br>
+
+    <p>click the button to move the next or previous Question</p><br><br>
+   
+    <button onclick="myFunction()" style="padding: 10px;background-color: blue;border-radius: 5px;border: 2px solid red;">Next Question</button>
+    <button onclick="myFunction2()" style="padding: 10px;border-radius: 5px;background-color: blue;border: 2px solid red;">previous Question</button><br>
+    <button onclick="myFunction2()" style="padding: 10px;border-radius: 5px;background-color: blue;border: 2px solid red;">Submit</button>
+
+    </div> -->
+    <script>
+
+const questions = [
+    {
+        question: "What is the capital of France?",
+        options: {
+            A: "London",
+            B: "Berlin",
+            C: "Madrid",
+            D: "Paris"
+        },
+        correctAnswer: "B"
+    },
+    {
+        question: "What is the capital of pakistan?",
+        options: {
+            A: "karachi",
+            B: "Islamabad ",
+            C: "multan",
+            D: "lahore"
+        },
+        correctAnswer: "B"
+    },
+    {
+        question: "What is the largest mammal?",
+        options: {
+            A: "Elephant",
+            B: "Blue Whale",
+            C: "Giraffe",
+            D: "Lion"
+        },
+        correctAnswer: "A"
+    }
+    
+];
+
+const questionText = document.getElementById('question-text');
+const answerA = document.getElementById('answer-a');
+const answerB = document.getElementById('answer-b');
+const answerC = document.getElementById('answer-c');
+const answerD = document.getElementById('answer-d');
+const labelA = document.getElementById('label-a');
+const labelB = document.getElementById('label-b');
+const labelC = document.getElementById('label-c');
+const labelD = document.getElementById('label-d');
+const nextButton = document.getElementById('next-button');
+const submitButton = document.getElementById('submit-button');
+const scoreText = document.getElementById('score-text');
+const asad = document.getElementById('asad');
+
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function displayQuestion(index) {
+    const currentQuestion = questions[index];
+    questionText.textContent = currentQuestion.question;
+    labelA.textContent = currentQuestion.options.A;
+    labelB.textContent = currentQuestion.options.B;
+    labelC.textContent = currentQuestion.options.C;
+    labelD.textContent = currentQuestion.options.D;
+}
+
+function showNextQuestion() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        displayQuestion(currentQuestionIndex);
+    } else {
+        nextButton.disabled = true;
+        submitButton.disabled = false;
+    }
+}
+
+function calculateScore() {
+    const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    if (selectedAnswer) {
+        const selectedOption = selectedAnswer.value;
+        const currentQuestion = questions[currentQuestionIndex];
+        if (selectedOption === currentQuestion.correctAnswer) {
+            score++;
+            // selectedAnswer.checked = false;
+            // showNextQuestion();
+        }
+    }
+} 
+
+function displayScore() {
+    questionText.textContent = "";
+    answerA.style.display = "none";
+    answerB.style.display = "none";
+    answerC.style.display = "none";
+    answerD.style.display = "none";
+    labelA.style.display = "none";
+    labelB.style.display = "none";
+    labelC.style.display = "none";
+    labelD.style.display = "none";
+    nextButton.style.display = "none";
+    submitButton.style.display = "none";
+    asad.style.display="none";
+    scoreText.textContent = `Your score: ${score} out of ${questions.length}`;
+}
+
+submitButton.addEventListener('click', calculateScore);
+nextButton.addEventListener('click', showNextQuestion);
+submitButton.addEventListener('click', displayScore);
+
+// Display the first question
+displayQuestion(currentQuestionIndex);
+
+
+
+
+
+
+
+
+
+
+
+// function myFunction(){
+//     alert ("yes");
+// }
+// function myFunction2(){
+
+// }
+// const answers = ['islamabad', 'nerobi','dehli','dhska'];
+// let score = 0;
+// const answer1 = document.querySelector('input[name="a"]:checked').value;
+// const answer2 = document.querySelector('input[name="b"]:checked').value;
+// const answer3 = document.querySelector('input[name="c"]:checked').value;
+
+// const newarr = [];
+// newarr.push(answer1,answer2,answer3)
+// console.log(newarr,'array');
+// console.log(answer1);
+// console.log(answer2);
+// console.log(answer3);
+
+// function handlescore(){
+// switch (answers.includes(newarr)) {
+//     case true:
+//         alert('right')
+//         break;
+//         default:
+//         alert('wrong');
+//         break;
+// }
+  
+// }
+// handlescore();
+    </script>
+    
+</body>
+</html>

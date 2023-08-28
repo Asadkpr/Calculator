@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application</title>
+</head>
+<body>
+    <h1 style="text-align: center;">App</h1>
+    <div style="width: 50%;border: 3px solid red;text-align: center;margin-left: 28%;">
+<h2> select the correct option</h2>
+
+<section class="main">
+    <div class="container">
+        <div class="col">
+            <h3 id="questionBox"></h3>
+        </div>
+        <div>
+            <input name="option" type="radio" id="first" value="a">
+            <label for="option"></label>  
+      </div>
+      <div>
+        <input name="option" type="radio" id="second" value="b">
+        <label for="second"></label>  
+  </div>
+  <div >
+    <input name="option" type="radio" id="third" value="c">
+    <label for="third"></label>  
+</div>
+<div >
+    <input name="option" type="radio" id="fourth" value="d">
+    <label for="fourth"></label>  
+</div>
+<button id="asad">Next</button>
+    </div>
+</div>
+</section>
+</div>
+
+
+    <script>
+ const quizData = [{
+       
+       question: "Which of the following is a client site language?",
+       a: "Java",
+       b: "C",
+       c: "Python",
+       d: "JavaScript",
+       correct: "d",
+   },
+   {
+       question: "What does HTML stand for?",
+       a: "Hypertext Markup Language",
+       b: "Cascading Style Sheet",
+       c: "Jason Object Notation",
+       d: "Helicopters Terminals Motorboats Lamborginis",
+       correct: "a",
+   },
+   {
+       question: "What year was JavaScript launched?",
+       a: "1996",
+       b: "1995",
+       c: "1994",
+       d: "1998",
+       correct: "b",
+   },
+   {
+       question: "What does CSS stands for?",
+       a: "Hypertext Markup Language",
+       b: "Cascading Style Sheet",
+       c: "Jason Object Notation",
+       d: "Helicopters Terminals Motorboats Lamborginis",
+       correct: "b",
+   }
+];
+let index =0;
+let questionBox=document.getElementById(questionBox);
+let optionInputs=document.querySelectorAll("option")
+
+function loadQuestion(){
+    let data =quizData[index];
+    console.log(data);
+    questionBox.innerText= `${index+1}) $(data.question)`;
+    optionInputs[0].nextElementSibling.innerText=data.a
+    optionInputs[1].nextElementSibling.innerText=data.b
+    optionInputs[2].nextElementSibling.innerText=data.c
+    optionInputs[3].nextElementSibling.innerText=data.d
+
+
+
+    ques
+    
+}
+loadQuestion();
+    </script>
+    
+</body>
+</html>

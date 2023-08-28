@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="asad.jpg" type="image/png">
+
+    <title>home page</title>
+    <style>
+        .btn {
+            border: 1px solid blueviolet;
+            padding: 15px;
+            border-radius: 7px;
+            background-color: rgb(218, 170, 15);
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .tableHead {
+            margin-left: -100px;
+        }
+        th{
+            border: 2px solid black;
+        }
+       tr td{
+        border: 2px solid black;
+       }
+       h1{
+        font-size: 80px;
+       }
+    </style>
+</head>
+
+<body style="background-color: aqua;">
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            <h1>Home</h1>
+            <p>Click the button to open related List</p>
+            <button class="btn" id="Movie" onclick="haldeOnClick('movie')">Movie List</button><br><br>
+            <button class="btn" id="song" onclick="haldeOnClick('song')">Song List</button><br><br>
+            <button class="btn" id="game" onclick="haldeOnClick('game')">Game List</button><br><br>
+            <button class="btn" id="Drama" onclick="haldeOnClick('Drama')">Drama List</button><br><br>
+            <a href="Movie.html"><button class="btn">Add New item</button></a><br><br>
+        </div>
+        <div style="width: 700px;margin-right: 50px;">
+            <table style="font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;border: 5px solid black;text-align: left;">
+    <h1 id="show" style="color: blue;"></h1>
+   <h2 id="list" style="color: chocolate;" ></h2>
+                <thead class="tableHead">
+                    <th>sr#</th>
+                    <th >Type</th>
+                    <th>Title</th>
+                    <th>Release Date</th>
+                    <th>Rating</th>
+                    <th>Genre</th>
+                </thead>
+                <tbody id="dataTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    
+    
+    <script src="index.js"></script>
+</body>
+
+</html>
